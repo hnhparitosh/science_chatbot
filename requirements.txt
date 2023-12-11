@@ -1,0 +1,3 @@
+git+https://github.com/hnhparitosh/openfabric_pysdk.git
+transformers
+sentencepiece

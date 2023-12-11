@@ -1,35 +1,25 @@
-# AI Junior Developer Test 
-Welcome! You’ve stepped into the arena – now show us what you’ve got! 
+# Flanbot - A Transformer based Chatbot to answer Science Questions 
 
-## Mission
-You're not just fiddling with code here; you're architecting the future. Your battleground? An AI app framework crying out for a brain.
+## Introduction
+The task is to forge an 💬NLP chatbot that doesn’t just answer, but masters science-related questions.
 
-Your task: Forge an 💬NLP chatbot that doesn’t just answer, but masters science-related questions.
+## Model Selection: Why flan-t5-base?
 
-Immerse yourself in the main.py file. Your battlefield is the execute function. Time to unleash your genius:
-```python
-############################################################
-# Callback function called on each execution pass
-############################################################
-def execute(request: SimpleText, ray: Ray, state: State) -> SimpleText:
-    output = []
-    for text in request.text:
-        # TODO Add code here
-        response = 'Hello!' <<-- Here you add the magic 
-        output.append(response)
+I chose `flan-t5-base` for creating the chatbot due to several reasons:
 
-    return SchemaUtil.create(SimpleText(), dict(text=output))
-```
-## Ground Rules
-Step up with any arsenal (read: libraries or packages) you believe in, but remember:
-* 👎 External services like chatGPT are off-limits. Stand on your own.
-* 👎 Plagiarism is for the weak. Forge your own path.
-* 👎 A broken app equals failure. Non-negotiable.
+1. **Versatility**: T5 (Text-to-Text Transfer Transformer) is a versatile model that can handle a variety of NLP tasks. This makes it a great choice for a chatbot that needs to understand and generate human-like responses.
+
+2. **Pre-training**: `flan-t5-base` is pre-trained on a large corpus of text, which gives it a good understanding of language semantics and syntax. This is crucial for generating accurate and contextually relevant responses.
+
+3. **Fine-tuning capabilities**: it can be fine-tuned on a specific task or domain. In our case, we can fine-tune it on a dataset of science-related questions and answers to make it a master in this domain.
+
+4. **Performance**: T5 has shown excellent performance in various NLP benchmarks, which gives us confidence in its ability to handle our task effectively.
+
 
 ## Deployment Options
 The application can be executed in two different ways:
 * locally by running the `start.sh` 
-* on in a docker container using `Dockerfile` 
+* on in a docker container using `Dockerfile` (preferred)
 
 ## Proving Your Mettle
 * Submit your masterpiece on GitHub. We want the link within **1 week, not a second more**.
