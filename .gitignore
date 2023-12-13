@@ -1,4 +1,3 @@
-dev
 datastore
-__pdatastore
-__pycache
+__pycache__
+flan-t5-base-sciq
