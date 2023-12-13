@@ -131,7 +131,6 @@ Given below is the output of the `test.sh` script.
 
 Please view the video demo [`here`](https://www.youtube.com/watch?v=W_awwgYJE7Y) or click the thumbnail below.
 
-[![Watch the video](media/thumbnail.png)](https://youtu.be/vt5fpE0bzSY)
+[![Watch the video](media/thumbnail.png)](https://youtu.be/W_awwgYJE7Y)
 
 Video is in `media/demo.mkv` directory as well.
-
