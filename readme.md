@@ -28,15 +28,15 @@ Bigger variants can be used for more complex tasks after fine-tuning on a specif
 ### Dataset
 - The model was trained on the `SciQ` dataset, which contains science-related questions and answers.  
 - The SciQ dataset contains 13,679 crowdsourced science exam questions about Physics, Chemistry and Biology, among others.  
-- The dataset was downloaded from [Kaggle](https://www.kaggle.com/datasets/thedevastator/sciq-a-dataset-for-science-question-answering) or from [Huggingface](https://huggingface.co/datasets/sciq).
+- The dataset was downloaded from [`Kaggle`](https://www.kaggle.com/datasets/thedevastator/sciq-a-dataset-for-science-question-answering) or from [`Huggingface`](https://huggingface.co/datasets/sciq).
 
 ### Training
 
 - The model was trained on a `Nvidia Tesla T4` GPU with `16GB` of VRAM on `Google Colab Free Tier`.
 
-- The notebook used for training is available `flanbot/finetune_flan_t5.ipynb` in the repository.
+- The notebook used for training is available [`here`](https://colab.research.google.com/drive/1BPtCo_BbPbMpgwF77pzrmKY2zIRzlEqg?usp=sharing) in the repository.
 
-- The model was trained with:
+- The model was finetuned with:
   - `batch size`: 8
   - `learning rate`:3e-4
   - `epochs`: 3
@@ -54,7 +54,9 @@ Bigger variants can be used for more complex tasks after fine-tuning on a specif
   - `ROUGE-L`: 0.4972
   - `ROUGE LSUM`: 0.4968
 
-- This fine-tuned model `flan-t5-base-sciq` has been uploaded to the Huggingface model hub and can be accessed [here](https://huggingface.co/hnhparitosh/flan-t5-base-sciq).
+![Metrics](media/metrics.png)
+
+- This fine-tuned model `flan-t5-base-sciq` has been uploaded to the Huggingface model hub and can be accessed [`here`](https://huggingface.co/hnhparitosh/flan-t5-base-sciq).
 
 ## How to run the application
 
@@ -64,7 +66,7 @@ Bigger variants can be used for more complex tasks after fine-tuning on a specif
    ```
 
 2. Download the model (`~990mb`) and place the folder in the `flanbot` directory.  
-   - The model can be downloaded from [Huggingface](https://huggingface.co/hnhparitosh/flan-t5-base-sciq).
+   - The model can be downloaded from [`Huggingface`](https://huggingface.co/hnhparitosh/flan-t5-base-sciq).
 
    - Go to `flanbot` directory and run the following command:
    ```bash
@@ -87,3 +89,46 @@ Bigger variants can be used for more complex tasks after fine-tuning on a specif
 5. Open the browser and go to `http://localhost:5500/` to access the chatbot.
 
 ## Demo
+
+### Swagger UI
+User can make requests to the chatbot by the default `Swagger UI` in the browser.  
+![Swagger UI](media/swagger.png)
+
+### curl / Bash
+Or by using `curl` in the terminal. The `test.sh` script asks 10 questions to the chatbot.  
+
+```bash
+#!/bin/bash
+
+declare -a questions=(
+   "What is controlled by regulatory proteins that bind to regulatory elements on dna?"
+   "Fertilization is the union of a sperm and egg, resulting in the formation of what?"
+   "Where do angiosperms produce seeds in flowers?"
+   "What is the name of the process by which plants convert light energy into chemical energy?"
+   "What is the name of the substance that gives plants their green color?"
+   "What is the name of the force that causes objects to fall to the ground?"
+   "What is the name of the type of chemical bond that involves the sharing of electrons between atoms?"
+   "What is the name of the law that states that the total mass of the reactants in a chemical reaction is equal to the total mass of the products?"
+   "What is the name of the process by which a solid substance changes directly into a gas without passing through the liquid state?"
+   "What is the name of the smallest particle of an element that retains its chemical properties?")
+
+for question in "${questions[@]}"
+do
+  curl --location 'localhost:5500/execution' \
+       --header 'Content-Type: application/json' \
+       --data '{
+           "text":["'"$question"'"]
+       }' &
+#   sleep 1
+done
+
+wait
+```
+Given below is the output of the `test.sh` script.
+![Request output](media/output.png)
+
+### Video Demo
+
+Please view the video demo [`here on Youtube`](https://www.youtube.com/watch?v=W_awwgYJE7Y).  
+
+![Video Demo](media/demo.mkv)
