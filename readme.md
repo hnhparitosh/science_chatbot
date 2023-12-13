@@ -129,6 +129,9 @@ Given below is the output of the `test.sh` script.
 
 ### Video Demo
 
-Please view the video demo [`here on Youtube`](https://www.youtube.com/watch?v=W_awwgYJE7Y).  
+Please view the video demo [`here`](https://www.youtube.com/watch?v=W_awwgYJE7Y) or click the thumbnail below.
 
-![Video Demo](media/demo.mkv)
+[![Watch the video](media/thumbnail.png)](https://youtu.be/vt5fpE0bzSY)
+
+Video is in `media/demo.mkv` directory as well.
+
